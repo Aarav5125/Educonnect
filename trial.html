@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Trial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <h1>Book a Trial</h1>
+    </header>
+
+    <!-- Trial Booking Form -->
+    <main>
+        <section id="trial-form-section">
+            <h2 class="section-title">Fill in your details to book a trial</h2>
+            <form id="trial-booking-form">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter your location" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2025 EduConnect. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById('trial-booking-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page reload on submit
+            const location = document.getElementById('location').value;
+            const phone = document.getElementById('phone').value;
+
+            // You can process the form data here (e.g., send it to a server)
+            alert(`Trial booked!\nLocation: ${location}\nPhone: ${phone}`);
+            
+            // Optionally, redirect after submission
+            window.location.href = "index.html"; // Redirect to homepage or any other page after successful booking
+        });
+    </script>
+</body>
+</html>
