@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .admin-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .admin-button:hover {
+            background-color: #0056b3;
+        }
+
+        .admin-dashboard {
+            display: none; /* Initially hidden */
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <h1>EDUCONNECT</h1>
+        <p>Your Gateway to Quality Education</p>
+    </header>
+
+    <!-- Tutors Section -->
+    <main>
+        <section id="tutors-section" class="tutors-container">
+            <h2 class="section-title">Our Tutors</h2>
+            <div class="tutors-horizontal-scroll">
+                <!-- Tutor Card 1 -->
+                <div class="tutor-card">
+                    <img src="https://via.placeholder.com/150" alt="James Smith" class="tutor-photo">
+                    <h3 class="tutor-name">James Smith</h3>
+                    <p class="tutor-subject">Expert in Mathematics</p>
+                    <p class="tutor-bio">Specializes in algebra, geometry, and calculus.</p>
+                    <p class="tutor-price"><strong>Price: ₹15,000</strong></p>
+                    <button class="book-tutor-btn" onclick="redirectToLogin()">Book Tutor</button>
+                    <button class="book-trial-btn" onclick="redirectToTrial()">Book a Trial</button>
+                </div>
+
+                <!-- Tutor Card 2 -->
+                <div class="tutor-card">
+                    <img src="https://via.placeholder.com/150" alt="Alex Chugh" class="tutor-photo">
+                    <h3 class="tutor-name">Alex Chugh</h3>
+                    <p class="tutor-subject">Physics Genius</p>
+                    <p class="tutor-bio">Specializes in mechanics and modern physics.</p>
+                    <p class="tutor-price"><strong>Price: ₹18,000</strong></p>
+                    <button class="book-tutor-btn" onclick="redirectToLogin()">Book Tutor</button>
+                    <button class="book-trial-btn" onclick="redirectToTrial()">Book a Trial</button>
+                </div>
+
+                <!-- Tutor Card 3 -->
+                <div class="tutor-card">
+                    <img src="https://via.placeholder.com/150" alt="John Smith" class="tutor-photo">
+                    <h3 class="tutor-name">John Smith</h3>
+                    <p class="tutor-subject">Chemistry Enthusiast</p>
+                    <p class="tutor-bio">Focused on organic and inorganic chemistry.</p>
+                    <p class="tutor-price"><strong>Price: ₹14,000</strong></p>
+                    <button class="book-tutor-btn" onclick="redirectToLogin()">Book Tutor</button>
+                    <button class="book-trial-btn" onclick="redirectToTrial()">Book a Trial</button>
+                </div>
+
+                <!-- Tutor Card 4 -->
+                <div class="tutor-card">
+                    <img src="https://via.placeholder.com/150" alt="Sarah Chugh" class="tutor-photo">
+                    <h3 class="tutor-name">Sarah Chugh</h3>
+                    <p class="tutor-subject">Biology Specialist</p>
+                    <p class="tutor-bio">Expert in genetics and microbiology.</p>
+                    <p class="tutor-price"><strong>Price: ₹16,000</strong></p>
+                    <button class="book-tutor-btn" onclick="redirectToLogin()">Book Tutor</button>
+                    <button class="book-trial-btn" onclick="redirectToTrial()">Book a Trial</button>
+                </div>
+
+                <!-- Tutor Card 5 -->
+                <div class="tutor-card">
+                    <img src="https://via.placeholder.com/150" alt="Emily Smith" class="tutor-photo">
+                    <h3 class="tutor-name">Emily Smith</h3>
+                    <p class="tutor-subject">English Literature</p>
+                    <p class="tutor-bio">Loves Shakespeare and modern literature.</p>
+                    <p class="tutor-price"><strong>Price: ₹13,000</strong></p>
+                    <button class="book-tutor-btn" onclick="redirectToLogin()">Book Tutor</button>
+                    <button class="book-trial-btn" onclick="redirectToTrial()">Book a Trial</button>
+                </div>
+
+                <!-- Tutor Card 6 -->
+                <div class="tutor-card">
+                    <img src="https://via.placeholder.com/150" alt="Maria Scott" class="tutor-photo">
+                    <h3 class="tutor-name">Maria Scott</h3>
+                    <p class="tutor-subject">History Buff</p>
+                    <p class="tutor-bio">Passionate about world history and archaeology.</p>
+                    <p class="tutor-price"><strong>Price: ₹17,000</strong></p>
+                    <button class="book-tutor-btn" onclick="redirectToLogin()">Book Tutor</button>
+                    <button class="book-trial-btn" onclick="redirectToTrial()">Book a Trial</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2025 EduConnect. All rights reserved.</p>
+    </footer>
+
+    <!-- Admin Dashboard -->
+    <button class="admin-button" onclick="toggleAdminDashboard()">Admin Dashboard</button>
+    <div id="admin-dashboard" class="admin-dashboard">
+        <h2>Admin Dashboard</h2>
+        <label for="admin-password">Enter Admin Password:</label>
+        <input type="password" id="admin-password">
+        <button onclick="validatePassword()">Submit</button>
+        <p id="error-message" class="error"></p>
+
+        <div id="booking-section" style="display: none;">
+            <h3>Bookings</h3>
+            <ul>
+                <li>Booking 1: John Doe - 10:00 AM</li>
+                <li>Booking 2: Jane Smith - 2:00 PM</li>
+                <li>Booking 3: Alice Johnson - 5:00 PM</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function redirectToLogin() {
+            window.location.href = "login.html";
+        }
+
+        function redirectToTrial() {
+            window.location.href = "trial.html";
+        }
+
+        function toggleAdminDashboard() {
+            const dashboard = document.getElementById('admin-dashboard');
+            dashboard.style.display = dashboard.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function validatePassword() {
+            const password = document.getElementById('admin-password').value;
+            const errorMessage = document.getElementById('error-message');
+            const bookingSection = document.getElementById('booking-section');
+
+            if (password === 'Educonnect.com') {
+                errorMessage.textContent = '';
+                bookingSection.style.display = 'block';
+            } else {
+                errorMessage.textContent = 'Incorrect password. Please try again.';
+                bookingSection.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
